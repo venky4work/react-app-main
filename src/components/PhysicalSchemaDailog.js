@@ -106,27 +106,24 @@ export default function PhysicalSchemaDailog(props) {
             padding: '10px'
           }
         }>
-         <img src={activeIcon} className="imgCss1" alt="dashboard"></img>
+          <img src={activeIcon} className="imgCss1" alt="dashboard"></img>
           <DialogTitle>
             <Typography>application ratings </Typography>
           </DialogTitle>
         </Box>
 
         <Divider></Divider>
-        <Grid container 
-                  direction= 'row'
-                  justifyContent="space-between"
-                  alignItems="center"
-        sx={{
-          // backgroundColor: '#ffffffb5',
-          borderRadius: 2,
-          width: '100%',
-          margin: '0px',
-        }}>
+        <Grid container columnGap={1}
+          direction='row'
+          sx={{
+            borderRadius: 2,
+            width: '100%',
+            margin: '0px',
+          }}>
           <Grid item xs={3} lg={3} md={3} sx={
             {
               backgroundColor: '#ffffffb5',
-              borderRadius: 2,
+              borderRadius: 1,
               margin: '10px 0px 0px 0px',
               padding: '25px'
             }
@@ -136,7 +133,7 @@ export default function PhysicalSchemaDailog(props) {
               flexDirection: 'row',
               justifyContent: 'space-around'
             }}><img src={catalogIcon} className="" alt="dashboard"></img><Typography className='font'>application ratings </Typography></div>
-            
+
             <small style={{
               marginLeft: '20px'
             }}>wrrrr </small>
@@ -144,7 +141,7 @@ export default function PhysicalSchemaDailog(props) {
           <Grid item xs={3} lg={3} md={3} sx={
             {
               backgroundColor: '#ffffffb5',
-              borderRadius: 2,
+              borderRadius: 1,
               margin: '10px 0px 0px 0px',
               padding: '25px'
             }
@@ -154,7 +151,7 @@ export default function PhysicalSchemaDailog(props) {
               flexDirection: 'row',
               justifyContent: 'space-around'
             }}><img src={schemaImg} className="" alt="dashboard"></img> <Typography className='font'>application ratings </Typography></div>
-            
+
             <small style={{
               marginLeft: '20px'
             }}>wrrrr </small>
@@ -162,7 +159,7 @@ export default function PhysicalSchemaDailog(props) {
           <Grid item xs={3} lg={3} md={3} sx={
             {
               backgroundColor: '#ffffffb5',
-              borderRadius: 2,
+              borderRadius: 1,
               margin: '10px 0px 0px 0px',
               padding: '25px'
             }
@@ -172,7 +169,7 @@ export default function PhysicalSchemaDailog(props) {
               flexDirection: 'row',
               justifyContent: 'space-around'
             }}><img src={dateFormat} className="" alt="dashboard"></img>  <Typography className='font'>application ratings </Typography></div>
-            
+
             <small style={{
               marginLeft: '20px'
             }}>wrrrr </small>
@@ -180,7 +177,7 @@ export default function PhysicalSchemaDailog(props) {
           <Grid item xs={3} lg={2.5} md={3} sx={
             {
               backgroundColor: '#ffffffb5',
-              borderRadius: 2,
+              borderRadius: 1,
               margin: '10px 0px 0px 0px',
               padding: '25px'
             }
@@ -190,7 +187,7 @@ export default function PhysicalSchemaDailog(props) {
               flexDirection: 'row',
               justifyContent: 'space-around'
             }}><img src={signImg} className="" alt="dashboard"></img><Typography className='font'>application ratings </Typography></div>
-            
+
             <small style={{
               marginLeft: '10px'
             }}>wrrrr </small>

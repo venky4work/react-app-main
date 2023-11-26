@@ -18,6 +18,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import activeIcon from '../assets/Active.png';
 import Divider from '@mui/material/Divider';
 import CartDailog from './CartDailog';
+import SubmitCart from './SubmitCart';
 
 const pages = ['Home -> Physical Schema'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -46,9 +47,10 @@ function SubHeader() {
 
   const handleClickCart = () => {
     setOpen(true);
+    setAnchorElCart(null);
   };
 
-  
+
   // const [value, setValue] = React.useState('Dione');
 
   const handleClose = () => {
@@ -67,7 +69,7 @@ function SubHeader() {
         keepMounted
         open={open}
         onClose={handleClose}
-        // value={value}
+      // value={value}
       />
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{
@@ -163,9 +165,14 @@ function SubHeader() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{
+            display: 'inline-flex',
+            gap: 2,
+          }}>
             <Tooltip title="Open cart items">
-              <AddShoppingCartIcon onClick={handleOpenCartMenu}></AddShoppingCartIcon>
+              <IconButton onClick={handleOpenCartMenu}>
+                <AddShoppingCartIcon></AddShoppingCartIcon>
+              </IconButton>
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
@@ -182,35 +189,45 @@ function SubHeader() {
               open={Boolean(anchorElCart)}
               onClose={handleCloseCartMenu}
             >
-              <IconButton
-                edge="start"
-                color="inherit"
-                // onClick={handleCancel}
-                aria-label="close"
-              >
-                <CloseIcon />
-              </IconButton>
-              <Typography>My cart ({cartItems.length})</Typography>
-              {cartItems.map((item) => (
-                <MenuItem key={item} onClick={handleCloseCartMenu}>
-                  <ListItemIcon>
-                    <img src={activeIcon} alt="dashboard"></img>
-                  </ListItemIcon>
-                  <ListItemText>{item}</ListItemText>
-                </MenuItem>
-              ))}
-              <Divider></Divider>
-              <Button
-                onClick={handleClickCart}
-                sx={{
-                  backgroundColor: 'red',
-                  borderRadius: '0px',
-                  color: 'white',
-                  '&:hover': {
-                    backgroundColor: '#fff',
-                    color: '#3c52b2',
-                  },
-                }}>Go to my cart</Button>
+              <Box padding={1}>
+                <Box sx={{
+                  display: 'flex',
+                  flexDirection: 'row-reverse'
+                }}>
+                  <IconButton
+                    edge="end"
+                    color="inherit"
+                    onClick={handleCloseCartMenu}
+                    aria-label="close"
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                </Box>
+
+                <Typography>My cart ({cartItems.length})</Typography>
+                {cartItems.map((item) => (
+                  <MenuItem key={item} onClick={handleCloseCartMenu}>
+                    <ListItemIcon>
+                      <img src={activeIcon} alt="dashboard"></img>
+                    </ListItemIcon>
+                    <ListItemText>{item}</ListItemText>
+                  </MenuItem>
+                ))}
+                <Divider></Divider>
+                <Button
+                  onClick={handleClickCart}
+                  sx={{
+                    width: '100%',
+                    backgroundColor: 'red',
+                    borderRadius: '0px',
+                    color: 'white',
+                    '&:hover': {
+                      backgroundColor: '#fff',
+                      color: '#3c52b2',
+                    },
+                  }}>Go to my cart
+                </Button>
+              </Box>
             </Menu>
             <Tooltip title="Open settings">
               <IconButton sx={{ p: 0 }} onClick={handleOpenUserMenu}>

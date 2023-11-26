@@ -6,15 +6,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Dialog from '@mui/material/Dialog';
 import CloseIcon from '@mui/icons-material/Close';
-import { Box, Checkbox, Divider, FormControlLabel, Grid, IconButton, Typography } from '@mui/material';
-import activeIcon from '../assets/Active.png'
-import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import TextField from '@mui/material/TextField';
+import { Box, Divider, IconButton, Typography } from '@mui/material';
 import "./PhysicalSchemaDialog.css"
-import CartItem from './CartItem';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 
 const options = [
     'None',
@@ -33,7 +27,7 @@ const options = [
     'Umbriel',
 ];
 
-export default function CartDailog(props) {
+export default function SubmitCart(props) {
     const { onClose, value: valueProp, open, ...other } = props;
     const [value, setValue] = React.useState(valueProp);
     const radioGroupRef = React.useRef(null);
@@ -123,7 +117,7 @@ export default function CartDailog(props) {
                     }
                 }>
                     <DialogTitle>
-                        <Typography>Back </Typography>
+                        <Typography><u>Back</u></Typography>
                     </DialogTitle>
                 </Box>
 
@@ -131,18 +125,43 @@ export default function CartDailog(props) {
                 <Box sx={
                     {
                         display: 'flex',
-                        flexDirection: 'row',
-                        columnGap: 2,
+                        flexDirection: 'column',
+                        rowGap: 2,
                         marginTop: 2,
                         padding: 2,
                     }
                 }>
+                    <Typography>Dear user,</Typography>
+                    <Typography>You are going to add those tables to use case <b>AWB_DFDS.</b></Typography>
+                    <Typography>Permissions will be granted after request approved. To proceed further, please provide the fallowing information.</Typography>
+                    <Box sx={
+                        {
+                            display: 'flex',
+                            flexDirection: 'column',
+                            rowGap: 2,
+                            marginTop: 2,
+                        }}>
+                        <Typography><b>Data Visa *</b></Typography>
+                        <Typography>Please provide the Data visa for data consumption.</Typography>
+                        <TextField id="outlined-basic" label="Input text" variant="outlined" sx={{
+                            maxWidth: '50%',
+                        }}/>
+                    </Box>
+                    <Box sx={
+                        {
+                            display: 'flex',
+                            flexDirection: 'column',
+                            rowGap: 2,
+                            marginTop: 2,
+                        }}>
+                        <Typography><b>Business Justification *</b></Typography>
+                        <Typography>Request will be rejected if no business justification</Typography>
+                        <TextField id="outlined-basic" label="Input text" variant="outlined" multiline rows={10}/>
+                    </Box>
                 </Box>
-
-
             </DialogContent>
             <DialogActions sx={{
-                justifyContent: 'space-between',
+                justifyContent: 'flex-end',
                 padding: '10px 30px 24px 40px',
                 backgroundColor: '#8080802e'
             }}>
@@ -160,7 +179,7 @@ export default function CartDailog(props) {
     );
 }
 
-CartDailog.propTypes = {
+SubmitCart.propTypes = {
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
     value: PropTypes.string.isRequired,
