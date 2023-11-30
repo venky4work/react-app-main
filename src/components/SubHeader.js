@@ -19,16 +19,19 @@ import activeIcon from '../assets/Active.png';
 import Divider from '@mui/material/Divider';
 import CartDailog from './CartDailog';
 import SubmitCart from './SubmitCart';
+import { useSelector } from 'react-redux';
 
 const pages = ['Home -> Physical Schema'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const cartItems = ['application-ratings', 'application-ratings111111111111111111111111111111111111', 'application-ratings'];
+// const cartItems = ['application-ratings', 'application-ratings111111111111111111111111111111111111', 'application-ratings'];
 
 function SubHeader() {
 
   const [anchorElCart, setAnchorElCart] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+  const cartItems = useSelector(state => state.cartItems.cartItems);
+  
 
   const handleOpenCartMenu = (event) => {
     setAnchorElCart(event.currentTarget);
@@ -206,13 +209,13 @@ function SubHeader() {
 
                 <Typography>My cart ({cartItems.length})</Typography>
                 {cartItems.map((item) => (
-                  <MenuItem key={item} onClick={handleCloseCartMenu} sx={{
+                  <MenuItem key={item.id} onClick={handleCloseCartMenu} sx={{
                     width: '400px',
                   }}>
                     <ListItemIcon>
                       <img src={activeIcon} alt="dashboard"></img>
                     </ListItemIcon>
-                    <ListItemText primary={item} primaryTypographyProps={{ style: { whiteSpace: 'normal', wordWrap: 'break-word' } }}></ListItemText>
+                    <ListItemText primary={item.schemaName} primaryTypographyProps={{ style: { whiteSpace: 'normal', wordWrap: 'break-word' } }}></ListItemText>
                   </MenuItem>
                 ))}
                 <Divider></Divider>

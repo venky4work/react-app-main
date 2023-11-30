@@ -17,6 +17,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useSelector } from 'react-redux';
 
 const options = [
     'None',
@@ -40,6 +41,8 @@ export default function SubmitCart(props) {
     const [value, setValue] = React.useState(valueProp);
     const radioGroupRef = React.useRef(null);
     const [show, setShow] = React.useState(false);
+
+    const cartItems = useSelector(state => state.cartItems.cartItems);
 
     const [testValue, setTestValue] = React.useState('');
     const [testValue1, setTestValue1] = React.useState('');
@@ -181,7 +184,7 @@ export default function SubmitCart(props) {
                     }>
                         <img src={activeIcon} className="imgCss1" alt="dashboard"></img>
                         <DialogTitle>
-                            <Typography>selected {options.size} tables in basket </Typography>
+                            <Typography>selected {cartItems.length} tables in basket </Typography>
                         </DialogTitle>
                     </Box>
 
@@ -262,13 +265,9 @@ export default function SubmitCart(props) {
                             borderRadius: '4px',
                         }
                     }}>
-
-                        <CartItem />
-                        <CartItem />
-                        <CartItem />
-                        <CartItem />
-                        <CartItem />
-                        <CartItem />
+                     {
+                        cartItems.map(item =>  <CartItem  data={item}/>)
+                     }
                     </Box>
 
                 </DialogContent>}

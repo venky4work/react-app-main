@@ -8,7 +8,9 @@ import styled from '@emotion/styled';
 import { CheckBox } from '@mui/icons-material';
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function CartItem() {
+export default function CartItem(props) {
+
+    const { data } = props;
 
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState('Dione');
@@ -90,12 +92,12 @@ export default function CartItem() {
                     <Box sx={{ maxWidth: '10%' }}>
                         <img src={activeIcon} className="imgCss1" alt="dashboard" style={{padding: 2}}></img>
                     </Box>
-                    <Box sx={{ maxWidth: '40%', flexGrow: 1, padding: 2 }}> <CardTitleFontWrapper>application-ratings</CardTitleFontWrapper></Box>
+                    <Box sx={{ maxWidth: '40%', flexGrow: 1, padding: 2 }}> <CardTitleFontWrapper>{data.schemaName}</CardTitleFontWrapper></Box>
 
                     <Box sx={{ display: 'inline-flex', flexDirection: 'row', maxWidth: '40%', flexWrap: 'wrap', flexShrink: 0, columnGap: 2, padding: 2 }} rowGap={1}>
                         <ContentWrapper>
                             <img src={wholesaleImg} className="" alt="dashboard"></img>
-                            <CardFontWrapper>WholeSale</CardFontWrapper>
+                            <CardFontWrapper>{data.type}</CardFontWrapper>
                         </ContentWrapper>
                         <ContentWrapper>
                             <img src={wholesaleImg} className="" alt="dashboard"></img>
