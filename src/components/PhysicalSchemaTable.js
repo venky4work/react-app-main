@@ -282,10 +282,10 @@ export default function PhysicalSchemaTable( props ) {
                             order={order}
                             orderBy={orderBy}
                             onRequestSort={handleRequestSort}
-                            rowCount={variables.length}
+                            rowCount={variables?.length}
                         />
                         <TableBody>
-                            {variables.map((row, index) => {
+                            {variables?.map((row, index) => {
                                 const isItemSelected = isSelected(row.id);
                                 const labelId = `enhanced-table-checkbox-${index}`;
 

@@ -17,7 +17,6 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
 import activeIcon from '../assets/Active.png';
 import Divider from '@mui/material/Divider';
-import CartDailog from './CartDailog';
 import SubmitCart from './SubmitCart';
 import { useSelector } from 'react-redux';
 

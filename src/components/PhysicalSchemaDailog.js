@@ -58,7 +58,8 @@ export default function PhysicalSchemaDailog(props) {
   };
 
   const handleAddCart = () => {
-    dispatch(addCart(data));
+    const newData = {...data, selected : selected, isSelected : true};
+    dispatch(addCart(newData));
     onClose();
   };
 
@@ -101,7 +102,7 @@ export default function PhysicalSchemaDailog(props) {
         }>
           <img src={activeIcon} className="imgCss1" alt="dashboard"></img>
           <DialogTitle>
-            <Typography>{data.schemaName} {cartItems.length}</Typography>
+            <Typography>{data.schemaName}</Typography>
           </DialogTitle>
         </Box>
 
