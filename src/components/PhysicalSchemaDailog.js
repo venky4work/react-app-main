@@ -26,12 +26,20 @@ export default function PhysicalSchemaDailog(props) {
   const dispatch = useDispatch();
 
 
-  const cartItems = useSelector(state => state.cartItems);
-  // React.useEffect(() => {
-  //   if (!open) {
-  //     setValue(valueProp);
-  //   }
-  // }, [valueProp, open]);
+  const cartItems = useSelector(state => state.cartItems.cartItems);
+
+
+  React.useEffect(() => {
+    const selectedData = cartItems.filter(e => e.id === data.id);
+    if (selectedData.length !== 0) {
+      setSelected(selectedData[0].selected);
+      if (selectedData[0].selected.length === data.variables.length) {
+        setValue(true);
+      } else {
+        setValue(false);
+      }
+    }
+  }, [cartItems]);
 
   // const handleEntering = () => {
   //   if (radioGroupRef.current != null) {
@@ -45,7 +53,7 @@ export default function PhysicalSchemaDailog(props) {
 
   const setAllSelected = (rows) => {
     setSelected(rows)
-  } 
+  }
 
   const handleSelectAllClick = (event) => {
     setValue(event.target.checked);
@@ -58,7 +66,7 @@ export default function PhysicalSchemaDailog(props) {
   };
 
   const handleAddCart = () => {
-    const newData = {...data, selected : selected, isSelected : true};
+    const newData = { ...data, selected: selected, isSelected: true };
     dispatch(addCart(newData));
     onClose();
   };
@@ -187,7 +195,7 @@ export default function PhysicalSchemaDailog(props) {
             }}>wrrrr </small>
           </Grid>
         </Grid>
-        <PhysicalSchemaTable variables={data.variables} setAllSelected={setAllSelected} selected={selected} setValue={setValue}/>
+        <PhysicalSchemaTable setAllSelected={setAllSelected} setValue={setValue} data={data} selected={selected} setSelected={setSelected} />
       </DialogContent>
       <DialogActions sx={{
         justifyContent: 'space-between',

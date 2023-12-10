@@ -20,6 +20,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { visuallyHidden } from '@mui/utils';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import './PhysicalSchemaTable.css';
+import { useSelector } from 'react-redux';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -187,28 +188,25 @@ function EnhancedTableHead(props) {
 // };
 
 export default function PhysicalSchemaTable( props ) {
-    const { variables, selected, setAllSelected, setValue } = props;
+    const { setAllSelected, setValue, data, selected, setSelected } = props;
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('name');
     // const [selected, setSelected] = React.useState([]);
-    // const [page, setPage] = React.useState(0);
-    // const [dense, setDense] = React.useState(false);
-    // const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+    const cartItems = useSelector(state => state.cartItems.cartItems);
+
+    React.useEffect(() => {
+       const selectedData = cartItems.filter(e => e.id === data.id);
+       console.log(selectedData);
+       if(selectedData.length !== 0)
+       setSelected(selectedData[0].selected);
+    }, [data, cartItems]);
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
     };
-
-    // const onClick = (event) => {
-    //     if (event.target.checked) {
-    //         const newSelected = variables.map((n) => n.id);
-    //         setSelected(newSelected);
-    //         return;
-    //     }
-    //     setSelected([]);
-    // };
 
     const handleClick = (event, id) => {
         const selectedIndex = selected.indexOf(id);
@@ -227,33 +225,16 @@ export default function PhysicalSchemaTable( props ) {
             );
         }
         setAllSelected(newSelected);
-        if(newSelected.length === variables.length) {
+        setSelected(newSelected);
+        if(newSelected.length === data.variables.length) {
             setValue(true);
         } else {
             setValue(false);
         }
     };
 
-    // const handleChangePage = (event, newPage) => {
-    //     setPage(newPage);
-    // };
-
-    // const handleChangeRowsPerPage = (event) => {
-    //     setRowsPerPage(parseInt(event.target.value, 10));
-    //     setPage(0);
-    // };
-
-    // const handleChangeDense = (event) => {
-    //     setDense(event.target.checked);
-    // };
 
     const isSelected = (id) => selected.indexOf(id) !== -1;
-
-    // const visibleRows = React.useMemo(
-    //     () =>
-    //         stableSort(variables, getComparator(order, orderBy))
-    //     [order, orderBy, variables],
-    // );
 
     return (
         <Box sx={{ width: '100%', paddingTop: '10px' }}>
@@ -278,14 +259,14 @@ export default function PhysicalSchemaTable( props ) {
                         // size={dense ? 'small' : 'medium'}
                     >
                         <EnhancedTableHead
-                            numSelected={selected.length}
+                            numSelected={selected?.length}
                             order={order}
                             orderBy={orderBy}
                             onRequestSort={handleRequestSort}
-                            rowCount={variables?.length}
+                            rowCount={data?.variables?.length}
                         />
                         <TableBody>
-                            {variables?.map((row, index) => {
+                            {data?.variables?.map((row, index) => {
                                 const isItemSelected = isSelected(row.id);
                                 const labelId = `enhanced-table-checkbox-${index}`;
 

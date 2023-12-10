@@ -27,9 +27,10 @@ import { addCart } from '../reducers/cartReducer';
 
 
 export default function SubmitCart(props) {
-    const { onClose, value: valueProp, open, ...other } = props;
-    const [value, setValue] = React.useState(valueProp);
+    const { onClose, open, ...other } = props;
+    const [value, setValue] = React.useState(false);
     const [show, setShow] = React.useState(false);
+    const [selected, setSelected] = React.useState([]);
     const dispatch = useDispatch();
 
     const [data, setData] = React.useState({});
@@ -40,40 +41,59 @@ export default function SubmitCart(props) {
 
     const cartItems = useSelector(state => state.cartItems.cartItems);
 
-    const selected = useSelector(state => state.cartItems.cartItems);
+    const selectedCarts = useSelector(state => state.cartItems.cartItems);
 
     React.useEffect(() => {
+        const selectedData = cartItems.filter(e => e.id === data.id);
+        if (selectedData.length !== 0) {
+          setSelected(selectedData[0].selected);
+          if (selectedData[0].selected.length === data.variables.length) {
+            setValue(true);
+          } else {
+            setValue(false);
+          }
+        }
         setShow(false);
         setDetailsShow(false);
-        setData({});
-        if (!open) {
-            setValue(valueProp);
-        }
-    }, [valueProp, open]);
+    }, [open, cartItems, data]);
 
-    const isSelected = (id) => selected.indexOf(id).isSelected;
+    const isSelected = (id) => selectedCarts.indexOf(id).isSelected;
 
     const setAllSelected = (rows) => {
-        // setSelected(rows)
+        setSelected(rows)
     }
 
     const handleEntering = () => {
     };
 
     const handleClick = (data) => {
-        console.log("cart item clicked");
+        const currentItem =  cartItems.find(e => e.id === data.id);
+        console.log(currentItem);
         setShow(true);
         setDetailsShow(true);
-        setData(data);
+        setData(currentItem);
+        setSelected(currentItem.selected);
     };
 
     const handleAddCart = () => {
+        console.log(selected);
         const newData = {...data, selected : selected, isSelected : true};
+        setData({...data, selected: selected});
         dispatch(addCart(newData));
         handleBack();
       };
 
     const handleSelectAllClick = (event) => {
+        setValue(event.target.checked);
+        if (event.target.checked) {
+          const newSelected = data.variables.map((n) => n.id);
+          setSelected(newSelected);
+          return;
+        }
+        setSelected([]);
+    };
+
+    const handleSelectAllCartClick = (event) => {
         // if (event.target.checked) {
         //   const newSelected = rows.map((n) => n.id);
         //   setSelected(newSelected);
@@ -249,7 +269,7 @@ export default function SubmitCart(props) {
                             }}>wrrrr </small>
                         </Grid>
                     </Grid>
-                    <PhysicalSchemaTable variables={data.variables} setAllSelected={setAllSelected} selected={[]} setValue={setValue} />
+                    <PhysicalSchemaTable setAllSelected={setAllSelected} setValue={setValue} data={data} selected={selected} setSelected={setSelected}/>
                 </> : <Box sx={
                     {
                         display: 'flex',
@@ -399,7 +419,7 @@ export default function SubmitCart(props) {
                       // indeterminate={numSelected > 0 && numSelected < rowCount}
                       checked={value}
                       checkedIcon={<CheckBoxOutlinedIcon />}
-                    //   onChange={handleSelectAllClick}
+                      onChange={handleSelectAllClick}
                       inputProps={{
                         'aria-label': 'Select all',
                       }} />} label="Select All">
@@ -438,7 +458,7 @@ export default function SubmitCart(props) {
                         // indeterminate={numSelected > 0 && numSelected < rowCount}
                         // checked={rowCount > 0 && numSelected === rowCount}
                         checkedIcon={<CheckBoxOutlinedIcon />}
-                        onChange={handleSelectAllClick}
+                        onChange={handleSelectAllCartClick}
                         inputProps={{
                             'aria-label': 'Select all',
                         }} />} label="Select All">
@@ -461,5 +481,4 @@ export default function SubmitCart(props) {
 SubmitCart.propTypes = {
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
-    value: PropTypes.string.isRequired,
 };
