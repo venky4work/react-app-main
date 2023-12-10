@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Dialog from '@mui/material/Dialog';
 import CloseIcon from '@mui/icons-material/Close';
-import { Box, Checkbox, Divider, FormControlLabel, Grid, IconButton, Typography } from '@mui/material';
+import { Box, Checkbox, Divider, FormControl, FormControlLabel, Grid, IconButton, InputLabel, MenuItem, Select, Typography } from '@mui/material';
 import PhysicalSchemaTable from './PhysicalSchemaTable';
 import schemaImg from '../assets/SchemaImg.png';
 import catalogIcon from '../assets/Catalog.png';
@@ -16,12 +16,15 @@ import activeIcon from '../assets/Active.png'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import "./PhysicalSchemaDialog.css"
 import { useDispatch, useSelector } from 'react-redux';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { addCart } from '../reducers/cartReducer';
 
 export default function PhysicalSchemaDailog(props) {
   const { onClose, data, open, ...other } = props;
   const [value, setValue] = React.useState(false);
   const [selected, setSelected] = React.useState([]);
+  const [testValue, setTestValue] = React.useState('');
+  const [testValue1, setTestValue1] = React.useState('');
 
   const dispatch = useDispatch();
 
@@ -50,6 +53,10 @@ export default function PhysicalSchemaDailog(props) {
   const handleCancel = () => {
     onClose();
   };
+
+  const handleChange = (event) => {
+    setTestValue(event.target.value);
+};
 
   const setAllSelected = (rows) => {
     setSelected(rows)
@@ -122,7 +129,7 @@ export default function PhysicalSchemaDailog(props) {
             width: '100%',
             margin: '0px',
           }}>
-          <Grid item xs={3} lg={3} md={3} sx={
+          <Grid item xs={3} sx={
             {
               backgroundColor: '#ffffffb5',
               borderRadius: 1,
@@ -133,14 +140,14 @@ export default function PhysicalSchemaDailog(props) {
             <div style={{
               display: 'flex',
               flexDirection: 'row',
-              justifyContent: 'space-around'
-            }}><img src={catalogIcon} className="" alt="dashboard"></img><Typography className='font'>{data.type} </Typography></div>
+              justifyContent: 'flex-start'
+            }}><img src={catalogIcon} style={{ padding: '10px' }} alt="dashboard"></img><Typography className='font'>{data.type} </Typography></div>
 
             <small style={{
               marginLeft: '20px'
             }}>wrrrr </small>
           </Grid>
-          <Grid item xs={3} lg={3} md={3} sx={
+          <Grid item xs sx={
             {
               backgroundColor: '#ffffffb5',
               borderRadius: 1,
@@ -151,14 +158,14 @@ export default function PhysicalSchemaDailog(props) {
             <div style={{
               display: 'flex',
               flexDirection: 'row',
-              justifyContent: 'space-around'
-            }}><img src={schemaImg} className="" alt="dashboard"></img> <Typography className='font'>application ratings </Typography></div>
+              justifyContent: 'flex-start'
+            }}><img src={schemaImg} style={{ padding: '10px' }} alt="dashboard"></img> <Typography className='font'>application ratings </Typography></div>
 
             <small style={{
-              marginLeft: '20px'
+              marginLeft: '10px'
             }}>wrrrr </small>
           </Grid>
-          <Grid item xs={3} lg={3} md={3} sx={
+          <Grid item xs sx={
             {
               backgroundColor: '#ffffffb5',
               borderRadius: 1,
@@ -169,14 +176,14 @@ export default function PhysicalSchemaDailog(props) {
             <div style={{
               display: 'flex',
               flexDirection: 'row',
-              justifyContent: 'space-around'
-            }}><img src={dateFormat} className="" alt="dashboard"></img>  <Typography className='font'>application ratings </Typography></div>
+              justifyContent: 'flex-start'
+            }}><img src={dateFormat} style={{ padding: '10px' }} alt="dashboard"></img>  <Typography className='font'>application ratings </Typography></div>
 
             <small style={{
-              marginLeft: '20px'
+              marginLeft: '10px'
             }}>wrrrr </small>
           </Grid>
-          <Grid item xs={3} lg={2.5} md={3} sx={
+          <Grid item xs sx={
             {
               backgroundColor: '#ffffffb5',
               borderRadius: 1,
@@ -187,14 +194,114 @@ export default function PhysicalSchemaDailog(props) {
             <div style={{
               display: 'flex',
               flexDirection: 'row',
-              justifyContent: 'space-around'
-            }}><img src={signImg} className="" alt="dashboard"></img><Typography className='font'>application ratings </Typography></div>
+              justifyContent: 'flex-start'
+            }}><img src={signImg} style={{ padding: '10px' }} alt="dashboard"></img><Typography className='font'>application ratings </Typography></div>
 
             <small style={{
               marginLeft: '10px'
             }}>wrrrr </small>
           </Grid>
         </Grid>
+        <Grid container columnGap={1}
+          direction='row'
+          sx={{
+            borderRadius: 2,
+            margin: '0px',
+            flexGrow: 1,
+          }}>
+          <Grid item xs={6} lg={6} md={6} sx={
+            {
+              backgroundColor: '#ffffffb5',
+              borderRadius: 1,
+              margin: '10px 0px 0px 0px',
+              padding: '25px'
+            }
+          }>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'flex-start'
+            }}><img src={catalogIcon} alt="dashboard" style={{ padding: '10px' }}></img><Typography className='font'>{data.type} </Typography></div>
+
+            <small style={{
+              marginLeft: '10px'
+            }}>wrrrr </small>
+          </Grid>
+          <Grid item xs sx={
+            {
+              backgroundColor: '#ffffffb5',
+              borderRadius: 1,
+              margin: '10px 0px 0px 0px',
+              padding: '25px'
+            }
+          }>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'flex-start'
+            }}><img src={schemaImg} style={{ padding: '10px' }} alt="dashboard"></img> <Typography className='font'>application ratings </Typography></div>
+
+            <small style={{
+              marginLeft: '10px'
+            }}>wrrrr </small><ContentCopyIcon fontSize='small'></ContentCopyIcon>
+          </Grid>
+        </Grid>
+        <Box sx={
+                        {
+                            display: 'flex',
+                            flexDirection: 'row',
+                            columnGap: 2,
+                            marginTop: 2,
+                            padding: 2,
+                        }
+                    }>
+                        <Box sx={{
+                            minWidth: 120, flexGrow: 1, display: 'flex',
+                            flexDirection: 'column', rowGap: 1
+                        }}>
+                            <Typography>Label1</Typography>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label">test</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={testValue}
+                                    label="test"
+                                    onChange={handleChange}
+                                    sx={{
+                                        backgroundColor: '#FCFCFC'
+                                    }}
+                                >
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                    <MenuItem value={30}>Thirty</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                        <Box sx={{
+                            minWidth: 120, flexGrow: 1, display: 'flex',
+                            flexDirection: 'column', rowGap: 1
+                        }}>
+                            <Typography>Label1</Typography>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label1">test1</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label1"
+                                    id="demo-simple-select1"
+                                    value={testValue1}
+                                    label="test1"
+                                    onChange={handleChange}
+                                    sx={{
+                                        backgroundColor: '#FCFCFC'
+                                    }}
+                                >
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                    <MenuItem value={30}>Thirty</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </Box>
         <PhysicalSchemaTable setAllSelected={setAllSelected} setValue={setValue} data={data} selected={selected} setSelected={setSelected} />
       </DialogContent>
       <DialogActions sx={{
