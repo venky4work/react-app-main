@@ -7,7 +7,7 @@ import SubHeader from "../components/SubHeader";
 import PhysicalSchemaCard from "../components/PhysicalSchemaCard";
 import FilterTab from "../components/FilterTab";
 import styled from '@emotion/styled';
-import React from "react";
+import React, { useState } from "react";
 
 const SchemaCardWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -77,6 +77,13 @@ const physicalSchemaData = [
 
 
 export default function PhysicalSchema() {
+
+    const [searchValue, setSearchValue] = useState('');
+
+    const filterCards = physicalSchemaData.filter(card => {
+        return card.schemaName.toLowerCase().includes(searchValue.toLowerCase()) !== false;
+    })
+
     const tabsData = ["Dashboard", "Add new UseCase"];
     return (
         <React.Fragment>
@@ -125,7 +132,7 @@ export default function PhysicalSchema() {
                 }}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} lg={6} md={6}>
-                            <SearchBar></SearchBar>
+                            <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}></SearchBar>
                         </Grid>
                         <Grid item xs={12} lg={6} md={6}>
                             <FilterTab></FilterTab>
@@ -134,16 +141,10 @@ export default function PhysicalSchema() {
                 </Grid>
                 <Grid item xs={12} lg={12} md={12}>
                     <SchemaCardWrapper>
-                        {physicalSchemaData.map(
+                        {filterCards.map(
                             e =>
                                 <PhysicalSchemaCard data={e}></PhysicalSchemaCard>
                         )}
-
-                        {/* <PhysicalSchemaCard></PhysicalSchemaCard>
-                        <PhysicalSchemaCard></PhysicalSchemaCard>
-                        <PhysicalSchemaCard></PhysicalSchemaCard>
-                        <PhysicalSchemaCard></PhysicalSchemaCard>
-                        <PhysicalSchemaCard></PhysicalSchemaCard> */}
                     </SchemaCardWrapper>
                 </Grid>
             </Grid>

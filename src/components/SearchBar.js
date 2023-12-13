@@ -47,15 +47,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function SearchBar() {
+export default function SearchBar({searchValue, setSearchValue}) {
+    
+    const searchInputRef = React.useRef();
+
+    const handleSearch = (e) => {
+        setSearchValue(e.target.value);
+    }
+
+    const handleClick = (e) => {
+        searchInputRef.current.focus();
+    }
+
     return (
         <Search>
             <StyledInputBase
+                ref={searchInputRef}
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
+                value={searchValue}
+                onChange={handleSearch}
             />
             <SearchIconWrapper>
-            <img src={searchImg} className="" alt="dashboard"></img>
+            <img src={searchImg} className="" alt="dashboard" onClick={handleClick}></img>
             </SearchIconWrapper>
 
         </Search>
