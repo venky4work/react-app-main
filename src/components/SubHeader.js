@@ -19,6 +19,7 @@ import activeIcon from '../assets/Active.png';
 import Divider from '@mui/material/Divider';
 import SubmitCart from './SubmitCart';
 import { useSelector } from 'react-redux';
+import { Badge } from '@mui/material';
 
 const pages = ['Home -> Physical Schema'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -30,7 +31,7 @@ function SubHeader() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const cartItems = useSelector(state => state.cartItems.cartItems);
-  
+
 
   const handleOpenCartMenu = (event) => {
     setAnchorElCart(event.currentTarget);
@@ -173,7 +174,9 @@ function SubHeader() {
           }}>
             <Tooltip title="Open cart items">
               <IconButton onClick={handleOpenCartMenu}>
-                <AddShoppingCartIcon></AddShoppingCartIcon>
+                <Badge badgeContent={cartItems.length} color="success">
+                  <AddShoppingCartIcon></AddShoppingCartIcon>
+                </Badge>
               </IconButton>
             </Tooltip>
             <Menu

@@ -79,7 +79,7 @@ export default function PhysicalSchemaCard(props) {
         onClose={handleClose}
         data={data}
       />
-      <Card sx={{ display: 'flex', width: '25%', overflow: 'unset', borderRadius: '4px', background: '#FCFCFC' }} onClick={handleClickListItem}>
+      <Card sx={{ display: 'flex', overflow: 'unset', borderRadius: '4px', background: '#FCFCFC' }} onClick={handleClickListItem}>
         <Box sx={{ display: 'inline-flex', flexDirection: 'row', padding: 2 }}>
           <Box sx={{
             padding: '20px',

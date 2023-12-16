@@ -22,55 +22,55 @@ const physicalSchemaData = [
         id: 1,
         schemaName: "application-ratings1",
         type: "WholeSale",
-        variables: 
-        [
-            { id : 1, name: "var1", type: 'VM', date: 'MMDDYYYY'},
-            { id : 2, name: "var2", type: 'VM', date: 'MMDDYYYY'},
-            { id : 3, name: "var3", type: 'VM', date: 'MMDDYYYY'},
-            { id : 4, name: "var4", type: 'VM', date: 'MMDDYYYY'},
-            { id : 5, name: "var5", type: 'VM', date: 'MMDDYYYY'},
-            { id : 6, name: "var6", type: 'VM', date: 'MMDDYYYY'},
-            { id : 7, name: "var7", type: 'VM', date: 'MMDDYYYY'},
-            { id : 8, name: "var8", type: 'VM', date: 'MMDDYYYY'},
-            { id : 9, name: "var9", type: 'VM', date: 'MMDDYYYY'},
-            { id : 10, name: "var10", type: 'VM', date: 'MMDDYYYY'},
-        ]
+        variables:
+            [
+                { id: 1, name: "var1", type: 'VM', date: 'MMDDYYYY' },
+                { id: 2, name: "var2", type: 'VM', date: 'MMDDYYYY' },
+                { id: 3, name: "var3", type: 'VM', date: 'MMDDYYYY' },
+                { id: 4, name: "var4", type: 'VM', date: 'MMDDYYYY' },
+                { id: 5, name: "var5", type: 'VM', date: 'MMDDYYYY' },
+                { id: 6, name: "var6", type: 'VM', date: 'MMDDYYYY' },
+                { id: 7, name: "var7", type: 'VM', date: 'MMDDYYYY' },
+                { id: 8, name: "var8", type: 'VM', date: 'MMDDYYYY' },
+                { id: 9, name: "var9", type: 'VM', date: 'MMDDYYYY' },
+                { id: 10, name: "var10", type: 'VM', date: 'MMDDYYYY' },
+            ]
     },
     {
         id: 2,
         schemaName: "application-ratings2",
         type: "WholeSale",
-        variables: 
-        [
-            { id : 1, name: "var1", type: 'VM', date: 'MMDDYYYY'},
-            { id : 2, name: "var2", type: 'VM', date: 'MMDDYYYY'},
-            { id : 3, name: "var3", type: 'VM', date: 'MMDDYYYY'},
-            { id : 4, name: "var4", type: 'VM', date: 'MMDDYYYY'},
-            { id : 5, name: "var5", type: 'VM', date: 'MMDDYYYY'},
-            { id : 6, name: "var6", type: 'VM', date: 'MMDDYYYY'},
-            { id : 7, name: "var7", type: 'VM', date: 'MMDDYYYY'},
-            { id : 8, name: "var8", type: 'VM', date: 'MMDDYYYY'},
-            { id : 9, name: "var9", type: 'VM', date: 'MMDDYYYY'},
-            { id : 10, name: "var10", type: 'VM', date: 'MMDDYYYY'},
-        ]
+        variables:
+            [
+                { id: 1, name: "var1", type: 'VM', date: 'MMDDYYYY' },
+                { id: 2, name: "var2", type: 'VM', date: 'MMDDYYYY' },
+                { id: 3, name: "var3", type: 'VM', date: 'MMDDYYYY' },
+                { id: 4, name: "var4", type: 'VM', date: 'MMDDYYYY' },
+                { id: 5, name: "var5", type: 'VM', date: 'MMDDYYYY' },
+                { id: 6, name: "var6", type: 'VM', date: 'MMDDYYYY' },
+                { id: 7, name: "var7", type: 'VM', date: 'MMDDYYYY' },
+                { id: 8, name: "var8", type: 'VM', date: 'MMDDYYYY' },
+                { id: 9, name: "var9", type: 'VM', date: 'MMDDYYYY' },
+                { id: 10, name: "var10", type: 'VM', date: 'MMDDYYYY' },
+            ]
     },
     {
         id: 3,
         schemaName: "application-ratings3",
         type: "WholeSale",
-        variables: 
-        [
-            { id : 1, name: "var1", type: 'VM', date: 'MMDDYYYY'},
-            { id : 2, name: "var2", type: 'VM', date: 'MMDDYYYY'},
-            { id : 3, name: "var3", type: 'VM', date: 'MMDDYYYY'},
-            { id : 4, name: "var4", type: 'VM', date: 'MMDDYYYY'},
-            { id : 5, name: "var5", type: 'VM', date: 'MMDDYYYY'},
-            { id : 6, name: "var6", type: 'VM', date: 'MMDDYYYY'},
-            { id : 7, name: "var7", type: 'VM', date: 'MMDDYYYY'},
-            { id : 8, name: "var8", type: 'VM', date: 'MMDDYYYY'},
-            { id : 9, name: "var9", type: 'VM', date: 'MMDDYYYY'},
-            { id : 10, name: "var10", type: 'VM', date: 'MMDDYYYY'},
-        ]
+        variables:
+            [
+                { id: 1, name: "var1", type: 'VM', date: 'MMDDYYYY' },
+                { id: 2, name: "var2", type: 'VM', date: 'MMDDYYYY' },
+                { id: 3, name: "var3", type: 'VM', date: 'MMDDYYYY' },
+                { id: 4, name: "var4", type: 'VM', date: 'MMDDYYYY' },
+                { id: 5, name: "var5", type: 'VM', date: 'MMDDYYYY' },
+                { id: 6, name: "var6", type: 'VM', date: 'MMDDYYYY' },
+                { id: 7, name: "var7", type: 'VM', date: 'MMDDYYYY' },
+                { id: 8, name: "var8", type: 'VM', date: 'MMDDYYYY' },
+                { id: 9, name: "var9", type: 'VM', date: 'MMDDYYYY' },
+                { id: 10, name: "var10", type: 'VM', date: 'MMDDYYYY' },
+            ]
     }
 
 ];
@@ -81,7 +81,11 @@ export default function PhysicalSchema() {
     const [searchValue, setSearchValue] = useState('');
 
     const filterCards = physicalSchemaData.filter(card => {
-        return card.schemaName.toLowerCase().includes(searchValue.toLowerCase()) !== false;
+        const condition1 = card.variables.filter(e => e.name.toLowerCase().includes(searchValue.toLowerCase()) !== false);
+        console.log(condition1);
+        const condition2 = card.schemaName.toLowerCase().includes(searchValue.toLowerCase()) !== false;
+        console.log(condition2);
+        return condition1.length > 0 || condition2;
     })
 
     const tabsData = ["Dashboard", "Add new UseCase"];
@@ -140,12 +144,16 @@ export default function PhysicalSchema() {
                     </Grid>
                 </Grid>
                 <Grid item xs={12} lg={12} md={12}>
-                    <SchemaCardWrapper>
+                    <Grid container columnGap={4} rowGap={8}>
+                        {/* <SchemaCardWrapper> */}
                         {filterCards.map(
                             e =>
-                                <PhysicalSchemaCard data={e}></PhysicalSchemaCard>
+                                <Grid item xs>
+                                    <PhysicalSchemaCard data={e}></PhysicalSchemaCard>
+                                </Grid>
                         )}
-                    </SchemaCardWrapper>
+                        {/* </SchemaCardWrapper> */}
+                    </Grid>
                 </Grid>
             </Grid>
         </React.Fragment>
